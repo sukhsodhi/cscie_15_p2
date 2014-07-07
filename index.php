@@ -1,6 +1,12 @@
 <?php
 error_reporting(E_ALL);       # Report Errors, Warnings, and Notices
 ini_set('display_errors', 1); # Display errors on page (instead of a log file)
+
+//Start the php session
+    session_start();
+    require "constants.php";
+    require "logic.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +22,7 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<?php require "logic.php" ?>
+
 </head>
 <body role="document"  >
     <div class="container theme-showcase" role="main">
@@ -43,27 +49,27 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
         	       <div class="col-sm-6">
                 		Number of words :
                         <select class="form-control" name="no_of_words">
-                            <option value="1" <?php echo $no_of_words==1?'Selected':'';?>>One</option>
-                            <option value="2" <?php echo $no_of_words==2?'Selected':'';?>>Two</option>
-                            <option value="3" <?php echo $no_of_words==3?'Selected':'';?>>Three</option>
-                            <option value="4" <?php echo $no_of_words==4?'Selected':'';?>>Four</option>
-                            <option value="5" <?php echo $no_of_words==5?'Selected':'';?>>Five</option>
-                            <option value="6" <?php echo $no_of_words==6?'Selected':'';?>>Six</option>
-                            <option value="7" <?php echo $no_of_words==7?'Selected':'';?>>Seven</option>
-                            <option value="8" <?php echo $no_of_words==8?'Selected':'';?>>Eight</option>
-                            <option value="9" <?php echo $no_of_words==9?'Selected':'';?>>Nine</option>
+                            <option value="1" <?php echo NO_OF_WORDS==1?'Selected':'';?>>One</option>
+                            <option value="2" <?php echo NO_OF_WORDS==2?'Selected':'';?>>Two</option>
+                            <option value="3" <?php echo NO_OF_WORDS==3?'Selected':'';?>>Three</option>
+                            <option value="4" <?php echo NO_OF_WORDS==4?'Selected':'';?>>Four</option>
+                            <option value="5" <?php echo NO_OF_WORDS==5?'Selected':'';?>>Five</option>
+                            <option value="6" <?php echo NO_OF_WORDS==6?'Selected':'';?>>Six</option>
+                            <option value="7" <?php echo NO_OF_WORDS==7?'Selected':'';?>>Seven</option>
+                            <option value="8" <?php echo NO_OF_WORDS==8?'Selected':'';?>>Eight</option>
+                            <option value="9" <?php echo NO_OF_WORDS==9?'Selected':'';?>>Nine</option>
                         </select>
                     </div>
                     <div class="col-sm-6">
                         
                         Number of Special Characters :
                         <select class="form-control" name="no_of_special_chars">
-                            <option value="0" <?php echo $no_of_special_chars==0?'Selected':'';?>>Zero</option>
-                            <option value="1" <?php echo $no_of_special_chars==1?'Selected':'';?>>One</option>
-                            <option value="2" <?php echo $no_of_special_chars==2?'Selected':'';?>>Two</option>
-                            <option value="3" <?php echo $no_of_special_chars==3?'Selected':'';?>>Three</option>
-                            <option value="4" <?php echo $no_of_special_chars==4?'Selected':'';?>>Four</option>
-                            <option value="5" <?php echo $no_of_special_chars==5?'Selected':'';?>>Five</option>
+                            <option value="0" <?php echo NO_OF_SPECIAL_CHARS==0?'Selected':'';?>>Zero</option>
+                            <option value="1" <?php echo NO_OF_SPECIAL_CHARS==1?'Selected':'';?>>One</option>
+                            <option value="2" <?php echo NO_OF_SPECIAL_CHARS==2?'Selected':'';?>>Two</option>
+                            <option value="3" <?php echo NO_OF_SPECIAL_CHARS==3?'Selected':'';?>>Three</option>
+                            <option value="4" <?php echo NO_OF_SPECIAL_CHARS==4?'Selected':'';?>>Four</option>
+                            <option value="5" <?php echo NO_OF_SPECIAL_CHARS==5?'Selected':'';?>>Five</option>
                            
                         </select>
             		</div>
@@ -74,18 +80,18 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
                    <div class="col-sm-6">
                         Choose Seperator :
                         <select class="form-control" name="word_seperator">
-                            <option value="-" <?php echo $word_seperator=='-'?'Selected':'';?>>Dash ("-")</option>
-                            <option value=" " <?php echo $word_seperator==' '?'Selected':'';?>>Space (" ")</option>
-                            <option value="" <?php echo $word_seperator==''?'Selected':'';?>>Empty String ("")</option>
-                            <option value="~" <?php echo $word_seperator=='~'?'Selected':'';?>>Tilda ("~")</option>
+                            <option value="-" <?php echo WORDS_SEPERATOR=='-'?'Selected':'';?>>Dash ("-")</option>
+                            <option value=" " <?php echo WORDS_SEPERATOR==' '?'Selected':'';?>>Space (" ")</option>
+                            <option value="" <?php echo WORDS_SEPERATOR==''?'Selected':'';?>>Empty String ("")</option>
+                            <option value="~" <?php echo WORDS_SEPERATOR=='~'?'Selected':'';?>>Tilda ("~")</option>
                         </select>
                    </div>
                    <div class="col-sm-6">
                         Options :
                         <select class="form-control" name="options">
-                            <option value="lower" <?php echo $options=='lower'?'Selected':'';?>>All Lower case</option>
-                            <option value="upper" <?php echo $options=='upper'?'Selected':'';?>>All Upper case</option>
-                            <option value="camel" <?php echo $options=='camel'?'Selected':'';?>>Camel Case</option>
+                            <option value="lower" <?php echo OPTIONS=='lower'?'Selected':'';?>>All Lower case</option>
+                            <option value="upper" <?php echo OPTIONS=='upper'?'Selected':'';?>>All Upper case</option>
+                            <option value="camel" <?php echo OPTIONS=='camel'?'Selected':'';?>>Camel Case</option>
                         </select>
                    </div>
                 </div>
@@ -93,7 +99,7 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
                 
                 <div class="row">
                    <div class="col-sm-6">
-                        <label><input type="checkbox" name="include_number" <?php echo $include_number?'Checked':'';?>/> Inlude numbers</label>
+                        <label><input type="checkbox" name="include_number" <?php echo INC_NUMBER?'Checked':'';?>/> Inlude numbers</label>
                    </div>
                    <div class="col-sm-6">
                         <button class="btn btn-primary" type="submit">Generate Password</button>
