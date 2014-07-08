@@ -14,4 +14,6 @@ The XCKD password generator supports the following
 	Ability to make the work lower, upper or camel case.
 	Ability to select the seperator as space, hypen etc.
 
-The words in the password are randomly selected from a list of words. This list of words are in a file. The system supports the ability to read from a web site. Due to performance issue the file was downloaded. 
+The words in the password are randomly selected from a list of words. This list of words are in a file. The system supports the ability to read from a web site. Due to performance issue the file was downloaded.
+
+The system uses SESSION to store the words array in memory for faster performance. 
