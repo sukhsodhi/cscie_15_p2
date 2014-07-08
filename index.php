@@ -25,8 +25,7 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
 
 </head>
 <body role="document"  >
-    <div class="container theme-showcase" role="main">
-  	
+    <div class="container theme-showcase" role="main">  	
     <div class="jumbotron">
         <h1>XKCD Style Password generator</h1>
         <p>This is a simple xkcd style password, it gives the options to  </p>
@@ -35,12 +34,20 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
             <li>Option to include numbers</li>
             <li>Option to include Special characters and the number of special characters</li>
             <li>Option to make the first character upper case</li>
-            <li>Select seperator (space, camelcase or hypen(default))</li>
+            <li>Select seperator (space, dash or hypen(default))</li>
         </ul>
     </div>
     
-    <form method="post">
+    <form method="POST">
         <div class="panel panel-primary">
+            <div class="panel-heading">              
+                <h3 class="panel-title">Generated Password</h3>
+            </div>
+            <div class="panel-body">
+                    Password : <?php echo generate_pwd();?>
+            </div>
+        </div>
+        <div class="panel panel-info">
             <div class="panel-heading">              
                 <h3 class="panel-title">xkcd options</h3>
             </div>

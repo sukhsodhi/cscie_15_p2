@@ -1,7 +1,5 @@
 <?php 
 
-$pwd = generate_pwd();
-
 /*
 This function generates the xkcd password, since all the options are member variables
 they are not passed in as paramters
@@ -17,7 +15,7 @@ function  generate_pwd()
 	$pwd_array =  array();
 	$index = 0;
 
-echo $words_count;
+	//echo $words_count;
 	
 	/*loop thru the number of words required*/
 	for ($i =0; $i < NO_OF_WORDS; $i++)
@@ -35,6 +33,7 @@ echo $words_count;
 
 /*
 Create the password string based on the password.
+the Array passed is the words that was randomly se;ected
 */
 function create_pwd_string($pwd_array)
 {
@@ -43,6 +42,7 @@ function create_pwd_string($pwd_array)
 	$first = true;
 	foreach ($pwd_array as $key => $value) 
 	{
+		/*Based on the options add the seperator and word to appropriate case*/
 		switch (OPTIONS)
 		{
 			case "upper":
@@ -57,9 +57,34 @@ function create_pwd_string($pwd_array)
 		}
 		$first=false;
 
-    	echo "pwd $pwd <br />\n";
+    	//echo "pwd $pwd <br />\n";
+	}
+	//Now check to see if the special characters
+	//Logic is to randomly select the special character from teh constant
+	//and randomly add it to the password
+	if (NO_OF_SPECIAL_CHARS>0)
+	{
+		$index_special_chars = 0;
+		$special_char ='';
+		$index_to_place_char =0;
+		for ($i=0; $i<NO_OF_SPECIAL_CHARS; $i++)
+		{
+			//get the Random Special character
+			$index_special_chars= rand(0,strlen(SPECIAL_CHARS)-1);
+			$special_char = substr(SPECIAL_CHARS,$index_special_chars,1);
+			echo "special_char $special_char  $index_special_chars<br />\n";
+			//get the Random index where the special character will be placed
+			$index_to_place_char = rand(0, strlen($pwd));
+			$pwd = substr($pwd, 0,$index_to_place_char) . $special_char . substr($pwd, $index_to_place_char);
+		}
 	}
 
+	if (INC_NUMBER)
+	{
+		$pwd = $pwd . rand(0,9);
+	}
+	return $pwd;
+	
 }
 
 /*
