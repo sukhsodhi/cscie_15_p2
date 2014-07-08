@@ -72,7 +72,7 @@ function create_pwd_string($pwd_array)
 			//get the Random Special character
 			$index_special_chars= rand(0,strlen(SPECIAL_CHARS)-1);
 			$special_char = substr(SPECIAL_CHARS,$index_special_chars,1);
-			echo "special_char $special_char  $index_special_chars<br />\n";
+			//echo "special_char $special_char  $index_special_chars<br />\n";
 			//get the Random index where the special character will be placed
 			$index_to_place_char = rand(0, strlen($pwd));
 			$pwd = substr($pwd, 0,$index_to_place_char) . $special_char . substr($pwd, $index_to_place_char);
